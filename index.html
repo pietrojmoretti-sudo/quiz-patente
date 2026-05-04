@@ -125,6 +125,12 @@ const Q = [
     "img": "3904"
   },
   {
+    "id": 19145,
+    "text": "Il segnale raffigurato preannuncia un attraversamento pedonale",
+    "answer": true,
+    "img": "151"
+  },
+  {
     "id": 21480,
     "text": "Il segnale raffigurato indica che per raggiungere Napoli bisogna percorrere la strada statale n. 190",
     "answer": false,
@@ -161,16 +167,16 @@ const Q = [
     "img": ""
   },
   {
-    "id": 19145,
-    "text": "Il segnale raffigurato preannuncia un attraversamento pedonale",
-    "answer": true,
-    "img": "151"
-  },
-  {
     "id": 20840,
     "text": "Il bordo del marciapiede dipinto come in figura indica la presenza di lavori in corso",
     "answer": false,
     "img": "442"
+  },
+  {
+    "id": 24197,
+    "text": "Il simbolo raffigurato è posto sul comando di accensione dei proiettori di profondità",
+    "answer": true,
+    "img": "713"
   },
   {
     "id": 24959,
@@ -200,11 +206,12 @@ function showQ() {
   document.getElementById("qtext").textContent = q.text;
   
   const imgEl = document.getElementById("qimg");
-  // Se c'è un ID immagine, la scarichiamo dal repository ufficiale
-  if (q.img && q.img !== "") {
+  // Se c'è un ID immagine, la scarichiamo dal repository di SCUOLAGUIDACRI o scavalleroo
+  if (q.img && q.img !== "" && q.img !== "null") {
     imgEl.src = "https://raw.githubusercontent.com/scavalleroo/quiz_scuolaguida/master/images/" + q.img + ".png";
     imgEl.style.display = "block";
   } else {
+    imgEl.src = "";
     imgEl.style.display = "none";
   }
   
@@ -214,7 +221,7 @@ function showQ() {
   upd();
 }
 
-function _old_showQ(){
+function _original_showQ(){
   document.getElementById("bnext").style.display="none";
   document.getElementById("fb").className="fb";
   document.getElementById("bv").className="btn bv";document.getElementById("bv").disabled=false;
